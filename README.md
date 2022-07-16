@@ -91,6 +91,9 @@ terraform destroy -var-file=env/prod.tfvars -auto-approve
 ```
 > command is a convenient way to destroy all remote objects managed by a particular Terraform configuration.
 
+### Logging
+Set up Fluent Bit as a DaemonSet  to send logs from containers to CloudWatch Logs.
+
 ### CI/CD workflows
 Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. Application definitions, configurations and environments should be declarative and version controlled. Application deployment and life cycle management should be automated, auditable and easy to understand.
 
