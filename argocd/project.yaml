@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: max-weather
+spec:
+  description: Max Weather ArgoCD project
+  sourceRepos:
+    - https://MY_INFRA_REPOSITORY/*
+  roles:
+    - name: read-only
+      description: Read-only privileges within project
+      policies:
+      - p, proj:production-infra:read-only, applications, get, production-infra/*, allow
+    - name: ci-role
+      description: Role to allow CICD pipeline to sync apps within project
+      policies:
+      - p, proj:production-infra:ci-role, applications, sync, production-infra/*, allow
+
+  destinations:
+    - namespace: production
+      server: https://kubernetes.default.svc
